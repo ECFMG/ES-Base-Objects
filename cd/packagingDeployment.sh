@@ -4,31 +4,28 @@
 
 # Instructions:
 
-#   It uses the CIRCLE_BRANCH environment variable as first parameter, passed via the CircleCI job config, as value to determine 
-#   for which package a new version should be created and which packages should only be deployed. 
-
 #   It also uses the CI environment
 #   variable as safeguard for making sure that the script runs in the CI environment.
 
-# - For a manual run from a developer workstation pass the name of the the package alias as parameter 
-#   (instead of the CIRCLE_BRANCH environment variable).
+#   Note: When you create a new Package, also create an extra version before using this script. This script is for updates to package.
 
-#   Note: When you create a Package, also create an extra version before running this script. 
-
+#   In Feature / Develop Branch
 #   To create subsequent versions & install from a developer workstation assuming alias for his/her Scratch org is MyScratchOrg, run
-#   scripts/packagingDeployment.sh packaging MyScratchOrg
+#   cd/packagingDeployment.sh packaging MyScratchOrg
 
-#   To install latest version from a developer workstation only (already defined in script below) to the scratch org
-#   scripts/packagingDeployment.sh install MyScratchOrg
+#   In Feature / Develop /  Package Branch
+#   To install latest version from a developer workstation only (already defined in script below) to the scratch org, run
+#   cd/packagingDeployment.sh install MyScratchOrg
 
-#   package people create package tag, version & install
-#   scripts/packagingDeployment.sh packaging MyScratchOrg
+#   In Package branch, 
+#   1. Update base version in this script
+#   2. Create a git tag with the version to trigger the UAT pipeline
 
-#   Prod (promote version)
-#   ??
+#   Before promoting to Production (promote package version)
+#   TODO: When running in Prod CD, promote the package version
 
-#   CD branches install (QA, UAT, Prod)
-#   scripts/packagingDeployment.sh
+#   While in CD branches, install (QA, UAT, Prod)
+#   cd/packagingDeployment.sh
 
 # Package specific variables
 BUILD_NAME="ECFMG.ES-Base-Objects - CI"
