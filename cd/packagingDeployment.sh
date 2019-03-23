@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# Script for packaging branch creation
+# Script for packaging & Installation of Salesforce Unlocked Package
 
 # Instructions:
-
+#####################################################################################################################################
 #   It also uses the CI environment
 #   variable as safeguard for making sure that the script runs in the CI environment.
 
@@ -26,20 +26,22 @@
 
 #   While in CD branches, install (QA, UAT, Prod)
 #   cd/packagingDeployment.sh
+#####################################################################################################################################
 
 # Package specific variables
+# In CI-CD, the build folder becomes the working folder 
 BUILD_NAME="ECFMG.ES-Base-Objects - CI"
 PACKAGE_NAME="EzSpaceBaseObjects"
-PACKAGE_VERSION="EzSpaceBaseObjects@0.1.0-1"
+PACKAGE_VERSION="EzSpaceBaseObjects@0.1.0-6"
 
 # Default values
-BRANCH=$1
+ACTION=$1
 SFDX_CLI_EXEC=sfdx
 TARGET_ORG=''
 PROJECT_HOME="$BUILD_NAME/package"
 
 if [ "$#" -eq 0 ]; then
-  echo "No parameter provided, this will be full package installation to authenticated CD Org"
+  echo "No parameter provided, this will be package installation to authenticated CD Org"
   echo "Current directory: ${PWD##*/}"
   # Change directory in Deployment pipeline
   cd "$PROJECT_HOME"
@@ -53,32 +55,26 @@ if [ "$#" -eq 2 ]; then
   echo "Using specific org $2"
 fi
 
-# doubtfull
-# Defining Salesforce CLI exec, depending if it's CI or local dev machine
-if [ $CI ]; then
-  echo "Script is running on CI"
-  SFDX_CLI_EXEC=node_modules/sfdx-cli/bin/run
-  TARGET_ORG="-u ciorg"
-fi
-
 # Reading the to be installed package version based on the alias@version key from sfdx-project.json
 PACKAGE_VERSION="$(cat sfdx-project.json | jq --arg VERSION "$PACKAGE_VERSION" '.packageAliases | .[$VERSION]' | tr -d '"')"
 
 # We're creating a new version
-if [ $BRANCH = "packaging" ]; then
-  echo "Creating new package version for es-base-objects"
+if [ "$ACTION" = "packaging" ]; then
+  echo "Creating new package version for $PACKAGE_NAME"
   PACKAGE_VERSION="$($SFDX_CLI_EXEC force:package:version:create -p $PACKAGE_NAME -x -w 10 --json | jq '.result.SubscriberPackageVersionId' | tr -d '"')"
   sleep 300 # We've to wait for package replication.
 fi
 
 # Installation in dependency order
-echo "Package installation es-base-objects"
+echo "Package installation: $PACKAGE_NAME"
 $SFDX_CLI_EXEC force:package:install --package $PACKAGE_VERSION -w 10 $TARGET_ORG
 
 #Deleting the Data from records (TODO: fails when record is in use)
+echo "Deleting existing Static Data"
 sfdx force:apex:execute -f scripts/my-apex-test.txt
 
 #Add the records back
+echo "Inserting new Static Data"
 sfdx force:data:tree:import --plan ./data/Plan1.json
 sfdx force:data:tree:import --plan ./data/Plan2.json
 
