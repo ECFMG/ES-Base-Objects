@@ -29,6 +29,7 @@
 #####################################################################################################################################
 
 # Package specific variables
+
 # In CI-CD, the build folder becomes the working folder 
 BUILD_NAME="ECFMG.ES-Base-Objects - CI"
 PACKAGE_NAME="EzSpaceBaseObjects"
