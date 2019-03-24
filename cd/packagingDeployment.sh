@@ -24,7 +24,7 @@
 #   Before promoting to Production (promote package version)
 #   TODO: When running in Prod CD, promote the package version
 
-#   While in CD branches, install (QA, UAT, Prod)
+#   While in CD branches, install (QA, UAT, Prod environment)
 #   cd/packagingDeployment.sh
 #####################################################################################################################################
 
@@ -32,7 +32,7 @@
 # In CI-CD, the build folder becomes the working folder 
 BUILD_NAME="ECFMG.ES-Base-Objects - CI"
 PACKAGE_NAME="EzSpaceBaseObjects"
-PACKAGE_VERSION="EzSpaceBaseObjects@0.1.0-7"
+PACKAGE_VERSION="EzSpaceBaseObjects@0.1.0-8"
 
 # Default values
 ACTION=$1
