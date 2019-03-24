@@ -62,11 +62,11 @@ PACKAGE_VERSION="$(cat sfdx-project.json | jq --arg VERSION "$PACKAGE_VERSION" '
 if [ "$ACTION" = "package" ]; then
   echo "Creating new package version for $PACKAGE_NAME"
   PACKAGE_VERSION="$($SFDX_CLI_EXEC force:package:version:create -p "$PACKAGE_NAME" -x -w 10 --json | jq '.result.SubscriberPackageVersionId' | tr -d '"')"
-  sleep 300 # We've to wait for package replication.
+  sleep 500 # We've to wait for package replication.
 fi
 
 # Installation in dependency order
-echo "Package installation: $PACKAGE_NAME"
+echo "Package installation: $PACKAGE_NAME $PACKAGE_VERSION"
 $SFDX_CLI_EXEC force:package:install --package $PACKAGE_VERSION -w 10 $TARGET_ORG
 
 #Deleting the Data from records (TODO: fails when record is in use)
