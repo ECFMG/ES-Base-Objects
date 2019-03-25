@@ -72,11 +72,11 @@ $SFDX_CLI_EXEC force:package:install --package $PACKAGE_VERSION -w 10 $TARGET_OR
 
 #Deleting the Data from records (TODO: fails when record is in use)
 echo "Deleting existing Static Data"
-sfdx force:apex:execute -f scripts/my-apex-test.txt
+#sfdx force:apex:execute -f scripts/my-apex-test.txt
 
 #Add the records back
-echo "Inserting new Static Data"
-sfdx force:data:tree:import --plan ./data/Plan1.json
-sfdx force:data:tree:import --plan ./data/Plan2.json
+#echo "Inserting new Static Data"
+#sfdx force:data:tree:import --plan ./data/Plan1.json
+#sfdx force:data:tree:import --plan ./data/Plan2.json
 
 echo "Done"
