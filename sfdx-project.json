@@ -2,7 +2,7 @@
     "packageDirectories": [
         {
             "path": "force-app",
-            "package": "ES-Base-Objects",
+            "package": "NEW-ES-Objects",
             "versionName": "ver 0.1",
             "versionNumber": "0.1.0.NEXT",
             "default": true
@@ -12,7 +12,7 @@
     "sfdcLoginUrl": "https://login.salesforce.com",
     "sourceApiVersion": "45.0",
     "packageAliases": {
-        "ES-Base-Objects": "0Hof4000000CacjCAC",
-        "ES-Base-Objects@0.1.0-1": "04tf40000047qyWAAQ"
+        "NEW-ES-Objects": "0Hof4000000CadrCAC",
+        "NEW-ES-Objects@0.1.0-1": "04tf40000047rHbAAI"
     }
 }
