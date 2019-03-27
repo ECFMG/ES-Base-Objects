@@ -2,23 +2,17 @@
     "packageDirectories": [
         {
             "path": "force-app",
-            "default": true,
-            "package": "EzSpaceBaseObjects",
+            "package": "ES-Base-Objects",
             "versionName": "ver 0.1",
-            "versionNumber": "0.1.0.NEXT"
+            "versionNumber": "0.1.0.NEXT",
+            "default": true
         }
     ],
     "namespace": "",
     "sfdcLoginUrl": "https://login.salesforce.com",
     "sourceApiVersion": "45.0",
     "packageAliases": {
-        "EzSpaceBaseObjects": "0Hof4000000CadhCAC",
-        "EzSpaceBaseObjects@0.1.0-1": "04tf40000047rA5AAI",
-        "EzSpaceBaseObjects@0.1.0-2": "04tf40000047rAFAAY",
-        "EzSpaceBaseObjects@0.1.0-5": "04tf40000047rAUAAY",
-        "EzSpaceBaseObjects@0.1.0-6": "04tf40000047rAZAAY",
-        "EzSpaceBaseObjects@0.1.0-7": "04tf40000047rAeAAI",
-        "EzSpaceBaseObjects@0.1.0-8": "04tf40000047rAjAAI",
-        "EzSpaceBaseObjects@0.1.0-9": "04tf40000047rBIAAY"
+        "ES-Base-Objects": "0Hof4000000CacjCAC",
+        "ES-Base-Objects@0.1.0-1": "04tf40000047qyWAAQ"
     }
 }
