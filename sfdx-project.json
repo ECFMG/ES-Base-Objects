@@ -6,6 +6,13 @@
             "package": "EzSpaceBaseObjects",
             "versionName": "ver 0.1",
             "versionNumber": "0.1.0.NEXT"
+        },
+        {
+            "path": "force-app",
+            "package": "NEW-ES-Objects",
+            "versionName": "ver 0.1",
+            "versionNumber": "0.1.0.NEXT",
+            "default": false
         }
     ],
     "namespace": "",
@@ -19,6 +26,9 @@
         "EzSpaceBaseObjects@0.1.0-6": "04tf40000047rAZAAY",
         "EzSpaceBaseObjects@0.1.0-7": "04tf40000047rAeAAI",
         "EzSpaceBaseObjects@0.1.0-8": "04tf40000047rAjAAI",
-        "EzSpaceBaseObjects@0.1.0-9": "04tf40000047rBIAAY"
+        "EzSpaceBaseObjects@0.1.0-9": "04tf40000047rBIAAY",
+        "NEW-ES-Objects": "0Hof4000000CadrCAC",
+        "EzSpaceBaseObjects@0.1.0-10": "04tf40000047rHWAAY",
+        "NEW-ES-Objects@0.1.0-1": "04tf40000047rHbAAI"
     }
 }
